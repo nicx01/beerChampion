@@ -89,7 +89,11 @@ footer {
     font-size: 16px;
     text-align: center;
   }
-
+  #playerNames {
+    width: 280px;
+    margin: auto;
+  }
+  
   input[type="text"],
   input[type="number"] {
     width: calc(100% - 20px);
