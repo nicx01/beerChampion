@@ -30,6 +30,16 @@ label {
     margin-bottom: 10px;
 }
 
+input[type="text"] {
+    padding: 8px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #777;
+    background-color: #333;
+    color: #eee;
+    margin-bottom: 10px;
+}
+
 input[type="number"] {
     padding: 8px;
     width: 100px;
@@ -132,4 +142,3 @@ footer {
   .difficulty-label:hover {
     filter: brightness(85%);
   }
-  

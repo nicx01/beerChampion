@@ -12,7 +12,16 @@
     <p>¿Cuántos jugadores van a jugar?</p>
     <form id="playerForm">
       <label for="numPlayers">Número de jugadores:</label>
-      <input type="number" id="numPlayers" name="numPlayers" min="2" required />
+      <input
+        type="number"
+        id="numPlayers"
+        name="numPlayers"
+        min="2"
+        required
+        onchange="addPlayerFields()"
+      />
+      <div id="playerNames" style="display: none"></div>
+      <!-- Aquí se mostrarán los campos de nombre de los jugadores -->
       <p>Selecciona el modo de dificultad:</p>
       <div class="difficulty-options">
         <input type="radio" id="easy" name="difficulty" value="easy" required />
@@ -43,6 +52,28 @@
       <p>made by nicx01</p>
     </footer>
     <script>
+      function addPlayerFields() {
+        const numPlayers = parseInt(
+          document.getElementById("numPlayers").value
+        );
+        const playerNamesDiv = document.getElementById("playerNames");
+        playerNamesDiv.innerHTML = "";
+
+        for (let i = 1; i <= numPlayers; i++) {
+          const playerNameInput = document.createElement("input");
+          playerNameInput.type = "text";
+          playerNameInput.name = `player${i}`;
+          playerNameInput.placeholder = `Nombre del jugador ${i}`;
+          playerNamesDiv.appendChild(playerNameInput);
+
+          if (i % 4 === 0 && i !== numPlayers) {
+            const lineBreak = document.createElement("br");
+            playerNamesDiv.appendChild(lineBreak);
+          }
+        }
+
+        playerNamesDiv.style.display = "block";
+      }
       let hardClicks = 0;
       const superHardButton = document.querySelector(".superhard");
 
@@ -67,7 +98,16 @@
             'input[name="difficulty"]:checked'
           );
           if (numPlayers >= 2 && difficulty) {
-            window.location.href = `game.html?players=${numPlayers}&difficulty=${difficulty.value}`;
+            const playerNames = [];
+            for (let i = 1; i <= numPlayers; i++) {
+              const playerName = document.querySelector(
+                `input[name="player${i}"]`
+              ).value;
+              playerNames.push(playerName);
+            }
+            window.location.href = `game.html?players=${JSON.stringify(
+              playerNames
+            )}&difficulty=${difficulty.value}`;
           } else if (numPlayers < 2) {
             alert("El mínimo de jugadores debe ser 2.");
           } else {

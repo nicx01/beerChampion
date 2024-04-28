@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
-const numPlayers = parseInt(urlParams.get("players"));
+const playersParam = (urlParams.get("players"));
+const startingPlayers = JSON.parse(playersParam);
 const difficulty = (urlParams.get("difficulty"));
 
 const tragos={
@@ -9,14 +10,6 @@ const tragos={
     'superhard':5,
 }
 
-function createPlayers(numPlayers) {
-  const players = [];
-  for (let i = 1; i <= numPlayers; i++) {
-    players.push(`jugador ${i}`);
-  }
-  return players;
-}
-
 function selectRandomPlayer(players) {
   const randomIndex = Math.floor(Math.random() * players.length);
   return players[randomIndex];
@@ -24,7 +17,7 @@ function selectRandomPlayer(players) {
 
 function displayCurrentPlayer(player, challenge) {
     const gameContainer = document.querySelector(".game-container");
-    gameContainer.innerHTML = `<p>Turno del ${player}</p><p>${challenge}</p><p><button id="regenerateChallengeBtn">Dame otra</button></p><p><button id="nextPlayerBtn">Siguiente jugador</button></p>`;
+    gameContainer.innerHTML = `<p>Turno de ${player}</p><p>${challenge}</p><p><button id="regenerateChallengeBtn">Dame otra</button></p><p><button id="nextPlayerBtn">Siguiente jugador</button></p>`;
     document.getElementById("nextPlayerBtn").addEventListener("click", nextPlayer);
     document.getElementById("regenerateChallengeBtn").addEventListener("click", () => {
       const newChallenge = generateDrinkChallenge(player);
@@ -43,7 +36,7 @@ function nextPlayer() {
     const challenge = generateDrinkChallenge(currentPlayer);
     displayCurrentPlayer(currentPlayer, challenge);
   } else {
-    document.querySelector(".game-container").innerHTML = `<p>Game Over</p><button id="goToIndexBtn"><i class="fas fa-home"></i>Volver al menú</button>`;
+    document.querySelector(".game-container").innerHTML = `<p>Game Over</p><p><button onclick="location.reload();">Jugar otra vez</button></p><p><button id="goToIndexBtn"><i class="fas fa-home"></i>Volver al menú</button></p>`;
     document.getElementById("goToIndexBtn").addEventListener("click", () => {
       window.location.href = "index.html";
     });
@@ -73,7 +66,8 @@ function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-let players = createPlayers(numPlayers);
+let players = startingPlayers;
+console.log(players);
 let currentPlayerIndex = Math.floor(Math.random() * players.length);
 let currentPlayer = players[currentPlayerIndex];
 const challenge = generateDrinkChallenge(currentPlayer);
