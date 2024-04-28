@@ -97,7 +97,7 @@ footer {
 
 .difficulty-options {
     display: flex;
-    flex-wrap: wrap; /* Permitir que los elementos se ajusten a la línea */
+    flex-wrap: wrap;
     gap: 10px;
   }
   
@@ -114,22 +114,22 @@ footer {
   }
   
   #easy:checked + .difficulty-label {
-    background-color: #8BC34A; /* Verde para fácil */
+    background-color: #8BC34A;
   }
   
   #medium:checked + .difficulty-label {
-    background-color: #FFEB3B; /* Amarillo para intermedio */
+    background-color: #FFEB3B;
   }
   
   #hard:checked + .difficulty-label {
-    background-color: #F44336; /* Rojo para difícil */
+    background-color: #F44336;
   }
   
   #superhard:checked + .difficulty-label {
-    background-color: #e436f4; /* Rojo para difícil */
+    background-color: #e436f4;
   }
   
   .difficulty-label:hover {
-    filter: brightness(85%); /* Reduce un poco el brillo al pasar el ratón */
+    filter: brightness(85%);
   }
   
