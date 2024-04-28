@@ -45,17 +45,16 @@ function nextPlayer() {
 
 function generateDrinkChallenge(player) {
     const challenges = [
-      `toma ${Math.floor(Math.random() * 3) + 1} tragos`,
-      `haz un baile divertido`,
-      `responde a una pregunta de trivia. Si fallas, toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
+      `toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
       `establece una regla. Quien la rompa, toma ${Math.floor(Math.random() * 5) + tragos[difficulty]} tragos`,
-      `canta una canción`,
       `elige a alguien para que tome ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
-      `haz una imitación de otro jugador`,
-      `cuenta un chiste. Si nadie se ríe, toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
-      `adivina el número del otro jugador. Si fallas, toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos. Si aciertas, el otro jugador toma ${Math.floor(Math.random() * 3) + 1} tragos`,
+      `adivina el número del otro jugador. Si fallas, toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos. Si aciertas, el otro jugador toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
       `todos beben menos tú`,
       `juega a cara o cruz por ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`
+      `elige una palabra prohibida. Si alguien la dice, toma ${Math.floor(Math.random() * 5) + tragos[difficulty]} tragos`,
+      `elige un color. Todos los que estén usando ropa de ese color toman ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
+      `elige una categoría (por ejemplo, marcas de coches). El primer jugador que no pueda nombrar algo de esa categoría toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`
+
     ];
   
     const challenge = getRandomElement(challenges);
