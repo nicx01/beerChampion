@@ -50,7 +50,7 @@ function generateDrinkChallenge(player) {
       `elige a alguien para que tome ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
       `adivina el número del otro jugador. Si fallas, toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos. Si aciertas, el otro jugador toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
       `todos beben menos tú`,
-      `juega a cara o cruz por ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`
+      `juega a cara o cruz por ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
       `elige una palabra prohibida. Si alguien la dice, toma ${Math.floor(Math.random() * 5) + tragos[difficulty]} tragos`,
       `elige un color. Todos los que estén usando ropa de ese color toman ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`,
       `elige una categoría (por ejemplo, marcas de coches). El primer jugador que no pueda nombrar algo de esa categoría toma ${Math.floor(Math.random() * 3) + tragos[difficulty]} tragos`
@@ -66,7 +66,6 @@ function getRandomElement(array) {
 }
 
 let players = startingPlayers;
-console.log(players);
 let currentPlayerIndex = Math.floor(Math.random() * players.length);
 let currentPlayer = players[currentPlayerIndex];
 const challenge = generateDrinkChallenge(currentPlayer);
