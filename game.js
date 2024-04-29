@@ -16,15 +16,30 @@ function selectRandomPlayer(players) {
 }
 
 function displayCurrentPlayer(player, challenge) {
-    const gameContainer = document.querySelector(".game-container");
-    gameContainer.innerHTML = `<p>Turno de ${player}</p><p>${challenge}</p><p><button id="regenerateChallengeBtn">Dame otra</button></p><p><button id="nextPlayerBtn">Siguiente jugador</button></p>`;
-    document.getElementById("nextPlayerBtn").addEventListener("click", nextPlayer);
-    document.getElementById("regenerateChallengeBtn").addEventListener("click", () => {
-      const newChallenge = generateDrinkChallenge(player);
-      displayCurrentPlayer(player, newChallenge);
-    });
-  }
+  const gameContainer = document.querySelector(".game-container");
+  gameContainer.innerHTML = `
+    <p>El turno de: ${player}</p>
+    <div class="card">
+      <div class="card-content">
+        <p>${challenge}</p>
+      </div>
+    </div>
+  `;
   
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("button-container");
+  buttonContainer.innerHTML = `
+    <button id="regenerateChallengeBtn">Dame otra</button>
+    <button id="nextPlayerBtn">Siguiente jugador</button>
+  `;
+  gameContainer.appendChild(buttonContainer);
+
+  document.getElementById("nextPlayerBtn").addEventListener("click", nextPlayer);
+  document.getElementById("regenerateChallengeBtn").addEventListener("click", () => {
+    const newChallenge = generateDrinkChallenge(player);
+    displayCurrentPlayer(player, newChallenge);
+  });
+} 
 
 
 function nextPlayer() {
