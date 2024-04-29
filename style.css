@@ -198,7 +198,7 @@ footer {
 }
 
 .card {
-  background-image: url('/beerChampion/img/fondoCarta.png');
+  background-image: url('./img/fondoCarta.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
