@@ -63,6 +63,7 @@
           playerNameInput.type = "text";
           playerNameInput.name = `player${i}`;
           playerNameInput.placeholder = `Nombre del jugador ${i}`;
+          playerNameInput.required = true;
           playerNamesDiv.appendChild(playerNameInput);
 
           if (i % 4 === 0 && i !== numPlayers) {
